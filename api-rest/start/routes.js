@@ -18,11 +18,10 @@ const { route } = require('@adonisjs/framework/src/Route/Manager')
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+Route.group(()=>
+{
 
-Route.post('users/register', () => {
-  return { mensaje: 'User created' }
-})
+  Route.post('users/register', 'UserController.store');
+
+}).prefix('api/v1');
 
